@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 Night Foods | Maggi & Biscuits</title>
+    <meta name="description" content="Order delicious Maggi and Biscuits instantly. Quick snacks for your cravings.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <h1>P5 <span class="highlight">Night Foods</span></h1>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <i class="fa-solid fa-sun slider-icon"></i>
+                            <i class="fa-solid fa-moon slider-icon"></i>
+                        </div>
+                    </label>
+                </div>
+                <div class="cart-icon" id="cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h2>Satisfy Your <br><span>Cravings</span></h2>
+                <p>Maggi and Biscuits, at your nearest.</p>
+            </section>
+
+            <section class="menu" id="menu">
+                <!-- Product Cards will be injected here by JS -->
+            </section>
+        </main>
+
+        <!-- Cart/Checkout Modal -->
+        <div class="modal-overlay" id="checkout-modal">
+            <div class="modal">
+                <button class="close-btn" id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+                <div class="modal-header">
+                    <h3>Your Order</h3>
+                </div>
+                <div class="order-items" id="order-items">
+                    <!-- Cart items inject here -->
+                    <p class="empty-cart-msg">Your cart is empty.</p>
+                </div>
+                <div class="order-summary">
+                    <div class="total-row">
+                        <span>Total Amount</span>
+                        <span id="total-price">₹0</span>
+                    </div>
+                </div>
+
+                <div class="payment-section hidden" id="payment-section">
+                    <div class="cod-info"
+                        style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 20px;">
+                        <i class="fa-solid fa-money-bill-wave"
+                            style="font-size: 3rem; color: var(--success-green); margin-bottom: 10px;"></i>
+                        <h3>Cash on Delivery</h3>
+                        <p style="color: var(--text-dim);">Pay comfortably when your order arrives.</p>
+                    </div>
+                    <button class="action-btn success-btn" id="confirm-payment-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Place Order on WhatsApp
+                    </button>
+                </div>
+
+                <div class="modal-actions" id="modal-actions">
+                    <button class="action-btn primary-btn" id="checkout-btn" disabled>Proceed to Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
