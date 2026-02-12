@@ -70,15 +70,16 @@
                 </div>
 
                 <div class="payment-section hidden" id="payment-section">
-                    <div class="cod-info"
-                        style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 20px;">
-                        <i class="fa-solid fa-money-bill-wave"
-                            style="font-size: 3rem; color: var(--success-green); margin-bottom: 10px;"></i>
-                        <h3>Cash on Delivery</h3>
-                        <p style="color: var(--text-dim);">Pay comfortably when your order arrives.</p>
+                    <div class="qr-container">
+                        <p class="scan-text">Scan to Pay: <span id="pay-amount"
+                                style="color: var(--primary-color);">₹0</span></p>
+                        <div class="qr-code-wrapper">
+                            <img src="" alt="Payment QR Code" id="qr-image" style="width: 200px; height: 200px;">
+                        </div>
+                        <p class="payment-details">Arpit Mukherjee<br>UPI ID: 9021770103@nyes</p>
                     </div>
                     <button class="action-btn success-btn" id="confirm-payment-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Place Order on WhatsApp
+                        <i class="fa-brands fa-instagram"></i> Proceed to Place Order
                     </button>
                 </div>
 

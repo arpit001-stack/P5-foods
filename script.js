@@ -33,6 +33,8 @@ const paymentSection = document.getElementById('payment-section');
 const confirmPaymentBtn = document.getElementById('confirm-payment-btn');
 const modalActions = document.getElementById('modal-actions');
 const themeToggleBtn = document.querySelector('.theme-switch input[type="checkbox"]');
+const qrImage = document.getElementById('qr-image');
+const payAmount = document.getElementById('pay-amount');
 
 // Init
 function init() {
@@ -163,22 +165,29 @@ closeModal.addEventListener('click', () => {
 checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) return;
 
+    // Calculate total
+    const total = calculateTotal();
+
+    // Update Pay Amount Text
+    if (payAmount) payAmount.innerText = `₹${total}`;
+
+    // Generate Dynamic UPI QR Code
+    // Format: upi://pay?pa=ADDRESS&pn=NAME&am=AMOUNT&cu=INR
+    const upiLink = `upi://pay?pa=9021770103@nyes&pn=Arpit%20Mukherjee&am=${total}&cu=INR`;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiLink)}`;
+
+    if (qrImage) qrImage.src = qrUrl;
+
     // Show Payment Section
     modalActions.classList.add('hidden');
     paymentSection.classList.remove('hidden');
 });
 
 confirmPaymentBtn.addEventListener('click', () => {
-    // Construct WhatsApp Message
-    const orderDetails = cart.map(item => `${item.name} x${item.quantity} (₹${item.price * item.quantity})`).join('%0a');
-    const total = calculateTotal();
-    const text = `*New Order from P5 Night Foods*%0a%0a${orderDetails}%0a%0a*Total: ₹${total}*%0a%0aPayment Mode: Cash on Delivery%0aPlease confirm my order.`;
+    // Redirect to Instagram
+    window.open('https://www.instagram.com/46th_arpit', '_blank');
 
-    // Redirect to WhatsApp with the specific number
-    const phoneNumber = "916299434084"; // Country code + Number
-    window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
-
-    // Reset Cart locally (optional, but good UX)
+    // Reset Cart
     cart = [];
     updateCartUI();
     checkoutModal.classList.remove('open');
